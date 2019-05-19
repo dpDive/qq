@@ -1,4 +1,4 @@
-function openWindow({redirectURL, isRedirect=true, windowNameSpecific}){
+function openWindow({redirectURL, isRedirect=true, windowNameSpecific}=''){
   if(isRedirect){
     window.name = window.name || 'x'
   }
