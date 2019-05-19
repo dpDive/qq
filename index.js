@@ -8,7 +8,7 @@ function openWindow({redirectURL, isRedirect=true, windowNameSpecific}=''){
 
   var {url, windowName, windowFeatures} = {
     url: redirectURL || 'https://docs.google.com/forms/d/e/1FAIpQLScAKYe1mG8o8Vfxj0khZWWHbMg7upEguqFzAYEESTBROwy8LA/viewform?usp=pp_url&entry.950619120'
-    +'='+window.location.search.replace(/[?][\S\s]+q[=]/).replace(/[&][\S\s]+/),
+    +'='+window.location.search.replace(/[?][\S\s]*q[=]/, '').replace(/[&][\S\s]*/, ''),
 
     windowName: window.name, //_blank //null
     windowFeatures: undefined,
