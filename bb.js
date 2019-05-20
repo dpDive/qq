@@ -1,7 +1,7 @@
 var bb = bb || {fn:{}}
 bb.fn.basicRun = function run(){
   bb.fn.initializeData()
-  bb.fn.openWindow({})
+  return bb.fn.openWindow({userKeyName:'notName'})
 }
 
 
@@ -39,8 +39,13 @@ bb.fn.initializeData = function initializeData(){
 
 bb.fn.openWindow = function openWindow({redirectURL, isRedirect=true, windowNameSpecific, questionTextKeyName='q', questionRefKeyName='qr', userKeyName='u', userName}=''){
   var data = bb.data || bb.fn.initializeData()
+
   if(typeof data['i']!=='undefined'){
-    return
+    console.log('data',data)
+    return bb.fn.openWindow
+  }
+  if(typeof data[userKeyName]==='undefined'){
+    return false
   }
   if(isRedirect){
     window.name = window.name || 'x'
@@ -69,6 +74,7 @@ bb.fn.openWindow = function openWindow({redirectURL, isRedirect=true, windowName
     windowFeatures: undefined,
   }
   window.open(url, windowName)
+  return true
 }
 
 // bb.fn.basicRun()

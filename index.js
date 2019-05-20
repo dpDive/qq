@@ -1,2 +1,12 @@
 var bb = bb || {fn:{}}
-bb.fn.basicRun()
+var hmmResult = bb.fn.basicRun()
+// if(typeof hmmResult=='function'){
+//   hmmResult = false
+// }
+
+//
+if(hmmResult===false){
+  window.addEventListener('load', function(){
+    document.querySelector('iframe#notLogIn').classList.remove('hidden')
+  })
+}
