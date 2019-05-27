@@ -1,7 +1,7 @@
 use:
 
 ```
-https://dpdive.github.io/qq?q=INSERT_QUESTION_TEXT &qr=INSERT_QUESTION_REF_NAME
+https://dpdive.github.io/qq?i=lol&q=INSERT_QUESTION_TEXT &qr=INSERT_QUESTION_REF_NAME
 ```
 
 ```

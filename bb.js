@@ -1,7 +1,7 @@
 var bb = bb || {fn:{}}
 bb.fn.basicRun = function run(){
   bb.fn.initializeData()
-  return bb.fn.openWindow({userKeyName:'notName'})
+  return bb.fn.openWindow({userKeyName:'notName', emailKeyName:'notEmail'})
 }
 
 
@@ -37,15 +37,15 @@ bb.fn.initializeData = function initializeData(){
 // }
 
 
-bb.fn.openWindow = function openWindow({redirectURL, isRedirect=true, windowNameSpecific, questionTextKeyName='q', questionRefKeyName='qr', userKeyName='u', userName}=''){
+bb.fn.openWindow = function openWindow({redirectURL, isRedirect=true, windowNameSpecific, questionTextKeyName='q', questionRefKeyName='qr', userKeyName='u', emailKeyName='e', userName}=''){
   var data = bb.data || bb.fn.initializeData()
 
+  if(typeof data[userKeyName]==='undefined'){
+    return false
+  }
   if(typeof data['i']!=='undefined'){
     console.log('data',data)
     return bb.fn.openWindow
-  }
-  if(typeof data[userKeyName]==='undefined'){
-    return false
   }
   if(isRedirect){
     window.name = window.name || 'x'
@@ -59,15 +59,18 @@ bb.fn.openWindow = function openWindow({redirectURL, isRedirect=true, windowName
     questionRefName: data[questionRefKeyName]||'qr',
     questionText: data[questionTextKeyName]||'See question on the board',
     userName: userName||data[userKeyName]||'',
+    email: data[emailKeyName]||'',
   })
   var newUserKeyName = 'entry.1556877090' //yep
   var newQuestionTextKeyName = 'entry.121123003' //yep
   var newAnswerTextKeyName = 'entry.597529986' //yep
+  var newEmailKeyName = 'entry.1155295681' //yep
   var {url, windowName, windowFeatures} = {
     url: (redirectURL || 'https://docs.google.com/forms/d/e/1FAIpQLScAKYe1mG8o8Vfxj0khZWWHbMg7upEguqFzAYEESTBROwy8LA/viewform?usp=pp_url&entry.950619120') //yep
     +'='+finalData.questionRefName
     +`&${newUserKeyName}=` +finalData.userName
     +`&${newQuestionTextKeyName}=` +finalData.questionText
+    +`&${newEmailKeyName}=` +finalData.email
     ,
 
     windowName: window.name, //_blank //null
